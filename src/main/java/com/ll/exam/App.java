@@ -30,13 +30,30 @@ public class App {
                 case "목록":
                     System.out.println("번호 / 작가 / 명언");
                     System.out.println("--------------------");
-                    for (int i = 0; i < wiseSayings.size(); i++){
+                    for (int i = wiseSayings.size() - 1; i >= 0; i--) {
                         WiseSaying wiseSaying_ = new WiseSaying();
                         wiseSaying_ = wiseSayings.get(i);
                         System.out.println(wiseSaying_.id + " / " + wiseSaying_.content + " / " + wiseSaying_.author);
                     }
                     continue;
-
+                case "삭제":
+                    int paramId = rq.getIntParam("id",0);
+                    if (paramId == 0) {
+                        System.out.println("id를 입력해주세요.");
+                        continue;
+                    }
+                    WiseSaying wiseSaying__ = null;
+                    for (WiseSaying wiseSaying___ : wiseSayings){
+                        if (wiseSaying___.id == paramId)
+                            wiseSaying__ = wiseSaying___;
+                    }
+                    if (wiseSaying__ == null) {
+                        System.out.println(paramId + "번째 명언은 존재하지 안습니다.");
+                        continue;
+                    }
+                    wiseSayings.remove(wiseSaying__);
+                    System.out.println(paramId + "번째 명언이 삭제되었습니다.");
+                    continue;
                 case "종료":
                     break outer;
             }
