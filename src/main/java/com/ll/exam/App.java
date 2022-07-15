@@ -42,22 +42,24 @@ public class App {
                         System.out.println("id를 입력해주세요.");
                         continue;
                     }
-                    WiseSaying wiseSaying__ = null;
-                    for (WiseSaying wiseSaying___ : wiseSayings){
-                        if (wiseSaying___.id == paramId)
-                            wiseSaying__ = wiseSaying___;
-                    }
-                    if (wiseSaying__ == null) {
+                    WiseSaying foundWiseSaying = findById(paramId);
+                    if (foundWiseSaying == null) {
                         System.out.println(paramId + "번째 명언은 존재하지 안습니다.");
                         continue;
                     }
-                    wiseSayings.remove(wiseSaying__);
+                    wiseSayings.remove(foundWiseSaying);
                     System.out.println(paramId + "번째 명언이 삭제되었습니다.");
                     continue;
                 case "종료":
                     break outer;
             }
         }
-
+    }
+    private WiseSaying findById(int paramId) {
+        for (WiseSaying wiseSaying : wiseSayings){
+            if (wiseSaying.id == paramId)
+                return wiseSaying;
+        }
+        return null;
     }
 }
