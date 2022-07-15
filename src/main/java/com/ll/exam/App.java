@@ -72,8 +72,10 @@ public class App {
             return;
         }
         System.out.println("명언(기존) : " + foundWiseSaying.content);
+        System.out.println("명언 : ");
         foundWiseSaying.content = sc.nextLine().trim();
         System.out.println("작가(기존) : " + foundWiseSaying.author);
+        System.out.println("작가 : ");
         foundWiseSaying.author = sc.nextLine().trim();
         System.out.println(paramId + "번째 명언이 수정되었습니다.");
     }
