@@ -24,7 +24,7 @@ public class App {
                     list(rq);
                     continue;
                 case "수정":
-                    write(rq);
+                    modify(rq);
                     continue;
                 case "삭제":
                     remove(rq);
